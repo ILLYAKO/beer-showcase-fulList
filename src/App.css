@@ -1,0 +1,26 @@
+.App {
+  max-width: 1440px;
+  background: #ededed;
+  padding: 170px 0 125px;
+  color: #000000;
+}
+
+.beer-store-title h1 {
+  text-align: center;
+  width: 512px;
+  height: 85px;
+  font-weight: 700;
+  font-size: 62px;
+  margin-bottom: 0;
+  line-height: 72px;
+}
+
+@media only screen and (max-width: 768px) {
+  .App {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .beer-store-title h1 {
+    font-size: 50px;
+  }
+}

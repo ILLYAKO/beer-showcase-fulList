@@ -1,0 +1,9 @@
+.dropdown-submenu .dropdown-menu {
+  left: 3%;
+}
+.dropdown-menu {
+  padding-left: 10px;
+}
+span.dropdown-toggle.beer-descripttion-bold {
+  cursor: pointer;
+}

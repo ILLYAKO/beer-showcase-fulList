@@ -1,0 +1,14 @@
+.item-img-card {
+  min-height: 400px;
+  background-position: 50% 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+@media only screen and (max-width: 768px) {
+  .item-img-card {
+    margin: 10px auto;
+  }
+}
