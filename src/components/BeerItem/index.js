@@ -1,4 +1,4 @@
-import React, { useContext, useState} from "react";
+import React, {  useState} from "react";
 import "./style.css";
 import { BeerItemContext } from "../../context/BeerItemContext";
 
@@ -6,8 +6,9 @@ import BeerItemImage from "./BeerItemImage";
 import BeerItemDetails from "./BeerItemDetails";
 
 const BeerItem = ({ beer }) => {
+  // const { animationCard } = useContext(BeerItemContext);
+  const [animationCard, setAnimationCard] = useState(false);
 
-  const { animationCard } = useContext(BeerItemContext);
   const [isButtonShown, setIsButtonShown] = useState(false);
   const [textButton, setTextButton] = useState("Show details");
   const [buttonStyle, setButtonStyle] = useState({ visibility: "hidden" });
@@ -74,6 +75,8 @@ const BeerItem = ({ beer }) => {
             setButtonStyle={setButtonStyle}
             isAtFirst={isAtFirst}
             setIsAtFirst={setIsAtFirst}
+            animationCard={animationCard}
+            setAnimationCard={setAnimationCard}
           ></BeerItemDetails>
         </div>
       </div>

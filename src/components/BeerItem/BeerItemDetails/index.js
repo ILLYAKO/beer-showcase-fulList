@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import "./style.css";
 import { v4 as uuidv4 } from "uuid";
 
-
 const BeerItemDetails = ({
   item,
   isButtonShown,
   textButton,
   setTextButton,
-  isAtFirst
+  isAtFirst,
+  animationCard,
+  setAnimationCard,
 }) => {
   const [isDetailShown, setIsDetailShown] = useState(false);
 
@@ -23,6 +24,7 @@ const BeerItemDetails = ({
 
   const onClickHandler = () => {
     setIsDetailShown(!isDetailShown);
+    setAnimationCard(!animationCard);
     setTextButton(
       textButton === "Show details" ? "Hide details" : "Show details"
     );
@@ -31,13 +33,13 @@ const BeerItemDetails = ({
         ? { display: "block", visibility: "visible" }
         : { display: "none" }
     );
-    return null;
+    // return null;
   };
 
   const toggleOpen = (eventMenu) => {
     const lineObj = eventMenu.target.nextSibling;
+    console.log(eventMenu)
     if (lineObj.className === "dropdown-menu") {
-      lineObj.style.backgroundColor = "EDEDED";
       lineObj.style.position = "relative";
       lineObj.className = "dropdown-menu show";
     } else {
@@ -49,15 +51,11 @@ const BeerItemDetails = ({
     return typeof itemObj === "object" && !isDouleNameValue(itemKey);
   };
 
-  const showBeerDetails = (
-    itemInner,
-    itemName = undefined
-  ) => {
-    
+  const showBeerDetails = (itemInner, itemName = undefined) => {
     if (!itemInner) {
       return null;
     }
-    
+
     if (isDouleNameValue(itemName)) {
       return (
         <span className="beer-descripttion">
@@ -70,7 +68,7 @@ const BeerItemDetails = ({
       <ul className={itemName ? "dropdown-menu" : undefined}>
         {Object.keys(itemInner).map((itemKey) => {
           return (
-            <div key={uuidv4()}>
+            <React.Fragment key={uuidv4()}>
               {isMultiLineDetail(
                 itemInner[itemKey] ? itemInner[itemKey] : "No data",
                 itemKey
@@ -80,7 +78,10 @@ const BeerItemDetails = ({
                     className="dropdown-toggle beer-descripttion-bold "
                     onClick={toggleOpen}
                   >
-                    {itemKey.replace("_", " ")}:
+                    {typeof itemKey === "number"
+                      ? console.log(itemKey + 1)
+                      : itemKey.replace("_", " ")}
+                    :
                   </span>
                   {typeof itemInner[itemKey] === "string" ||
                   typeof itemInner[itemKey] === "number" ? (
@@ -92,7 +93,7 @@ const BeerItemDetails = ({
                   )}
                 </li>
               ) : (
-                <li >
+                <li>
                   <span className={"beer-descripttion-bold"}>
                     {itemKey.replace("_", " ")}:
                   </span>
@@ -106,7 +107,7 @@ const BeerItemDetails = ({
                   )}
                 </li>
               )}
-            </div>
+            </React.Fragment>
           );
         })}
       </ul>

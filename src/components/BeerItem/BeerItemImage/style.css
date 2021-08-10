@@ -1,14 +1,20 @@
 .item-img-card {
+  display: flex;
   min-height: 400px;
   background-position: 50% 0;
   background-size: contain;
   background-repeat: no-repeat;
   margin-top: 50px;
   margin-bottom: 50px;
+  max-width: 100%;
 }
 
 @media only screen and (max-width: 768px) {
   .item-img-card {
     margin: 10px auto;
   }
+}
+
+.beer-card-item-zoomed-in div.item-img-card{
+  min-height: 800px;
 }
