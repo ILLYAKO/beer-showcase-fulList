@@ -1,16 +1,16 @@
 import React from 'react'
 import "./style.css";
 
-const BeerItemImage = ({item}) => {
-    return (
-      <div
-        className="item-img-card shake-lr"
-        style={{
-          backgroundImage: "url(" + item.image_url + ")",
-        }}
-        title={item.name}
-      ></div>
-    );
-}
+const BeerItemImage = ( {image_url, title} ) => {
+  return (
+    <div
+      className="item-img-card shake-lr"
+      style={{
+        backgroundImage: "url(" + image_url + ")",
+      }}
+      title={title}
+    ></div>
+  );
+};
 
 export default BeerItemImage

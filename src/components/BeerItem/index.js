@@ -1,47 +1,56 @@
-import React, {  useState} from "react";
+import React, { useState } from "react";
 import "./style.css";
-import { BeerItemContext } from "../../context/BeerItemContext";
-
 import BeerItemImage from "./BeerItemImage";
 import BeerItemDetails from "./BeerItemDetails";
+import BeerItemHeader from "./BeerItemHeader";
 
 const BeerItem = ({ beer }) => {
-  // const { animationCard } = useContext(BeerItemContext);
   const [animationCard, setAnimationCard] = useState(false);
 
   const [isButtonShown, setIsButtonShown] = useState(false);
   const [textButton, setTextButton] = useState("Show details");
-  const [buttonStyle, setButtonStyle] = useState({ visibility: "hidden" });
   const [isAtFirst, setIsAtFirst] = useState(true);
+  const [detailTextStyle, setDetailTextStyle] = useState({
+    display: "none",
+    visibility: "hidden",
+  });
+
+  const [isDetailShown, setIsDetailShown] = useState(false);
+  const onClickHandler = () => {
+    setIsDetailShown(!isDetailShown);
+    setAnimationCard(!animationCard);
+    setTextButton(
+      textButton === "Show details" ? "Hide details" : "Show details"
+    );
+    setDetailTextStyle(
+      detailTextStyle.display === "none"
+        ? { display: "block", visibility: "visible" }
+        : { display: "none" }
+    );
+  };
 
   const buttonTextChange = (text) => {
     if (text === "Hide details") {
       setTextButton("Hide details");
-      !isButtonShown && setButtonStyle({ visibility: "hidden" });
     } else {
       setTextButton("Show details");
-      setButtonStyle({ visibility: "visible" });
     }
   };
 
   const onMouseEnterHandler = () => {
     setIsAtFirst(false);
-    setButtonStyle(
-      isButtonShown && textButton === "Show details"
-        ? { visibility: "hidden" }
-        : ({ visibility: "visible" }, setIsButtonShown(true))
-    );
+    if (!isButtonShown || textButton !== "Show details") {
+      setIsButtonShown(true);
+    }
     buttonTextChange(textButton);
   };
 
-  const onMouseLeaveHandler = () => {
+  const onMouseLeaveHandler = (e) => {
     setIsAtFirst(false);
-    setButtonStyle(
-      isButtonShown && textButton === "Show details"
-        ? // eslint-disable-next-line
-          ({ visibility: "hidden" }, setIsButtonShown(false))
-        : { visibility: "visible" }
-    );
+    if (isButtonShown && textButton === "Show details") {
+      setIsButtonShown(false);
+    }
+
     buttonTextChange(textButton);
   };
 
@@ -62,21 +71,34 @@ const BeerItem = ({ beer }) => {
       beer-row-item
       "
       >
-        <div className="col-md-4 p-0">
-          <BeerItemImage item={beer}></BeerItemImage>
+        <div className="col-md-4 p-0 ">
+          <BeerItemImage
+            image_url={beer.image_url}
+            title={beer.name}
+          ></BeerItemImage>
         </div>
-        <div className="col-md-8 ">
-          <BeerItemDetails
+        <div className="col-md-8 card-body beer-card-right">
+          <BeerItemHeader
             item={beer}
+            onClickHandler={onClickHandler}
             isButtonShown={isButtonShown}
             textButton={textButton}
-            setTextButton={setTextButton}
-            buttonStyle={buttonStyle}
-            setButtonStyle={setButtonStyle}
             isAtFirst={isAtFirst}
-            setIsAtFirst={setIsAtFirst}
-            animationCard={animationCard}
-            setAnimationCard={setAnimationCard}
+          ></BeerItemHeader>
+          <BeerItemDetails
+            item={beer}
+            isDetailShown={isDetailShown}
+            detailTextStyle={detailTextStyle}
+
+            // isButtonShown={isButtonShown}
+            // textButton={textButton}
+            // setTextButton={setTextButton}
+            // buttonStyle={buttonStyle}
+            // setButtonStyle={setButtonStyle}
+            // isAtFirst={isAtFirst}
+            // setIsAtFirst={setIsAtFirst}
+            // animationCard={animationCard}
+            // setAnimationCard={setAnimationCard}
           ></BeerItemDetails>
         </div>
       </div>
