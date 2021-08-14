@@ -1,51 +1,59 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-
-import { makeStyles } from "@material-ui/core/styles";
+// import { makeStyles } from "@material-ui/core/styles";
 import Accordion from "@material-ui/core/Accordion";
 import AccordionSummary from "@material-ui/core/AccordionSummary";
 import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import "./style.css";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-  heading: {
-    fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-}));
 
 export default function ItemAccordion({ itemName, itemAccordion }) {
-  const classes = useStyles();
-  console.log("itemName:", itemName);
-  console.log("itemAccordion", itemAccordion);
+  // const classes = useStyles();
 
+  // const isDouleNameValue = (text) =>["volume", "boil_volume", "temp", "amount", "yeast"].includes(text);
   const isDouleNameValue = (text) =>
-    ["volume", "boil_volume", "temp", "amount", "yeast"].includes(text);
+    ["volume", "boil_volume", "temp", "amount"].includes(text);
+
 
   const showInnerAccordion = (itemKey, itemAccordion) => {
+
+
+    // console.log(
+    //   "Key",
+    //   itemKey,
+    //   "- Value: ",
+    //   itemAccordion,
+    //   " Type: ",
+    //   typeof itemAccordion
+    // );
+
+
     if (!itemAccordion) {
+       // twist : null
       return (
-        <AccordionDetails>
-          <Typography key={uuidv4()}>
+        <AccordionDetails key={uuidv4()}>
+          {/* <Typography> */}
+          <li>
             <span className={"beer-descripttion-bold"}>
               {!isNaN(itemKey)
                 ? Number(itemKey) + 1
                 : itemKey.replace("_", " ")}
             </span>
-            : <span className="beer-descripttion">NO DATA</span>
-          </Typography>
+            : <span className="beer-descripttion">no data</span>
+          </li>
+          {/* </Typography> */}
         </AccordionDetails>
       );
     }
 
     if (isDouleNameValue(itemKey)) {
+      console.log(itemKey, ":", itemAccordion);
       return (
-        <AccordionDetails>
-          <Typography key={uuidv4()}>
+        <AccordionDetails key={uuidv4()}>
+          {/* <Typography> */}
+          <li>
             <span className={"beer-descripttion-bold"}>
               {!isNaN(itemKey)
                 ? Number(itemKey) + 1
@@ -56,7 +64,8 @@ export default function ItemAccordion({ itemName, itemAccordion }) {
               {itemAccordion["value"]}
               {itemAccordion["unit"]}
             </span>
-          </Typography>
+          </li>
+          {/* </Typography> */}
         </AccordionDetails>
       );
     }
@@ -65,32 +74,42 @@ export default function ItemAccordion({ itemName, itemAccordion }) {
       typeof itemAccordion === "number" ||
       typeof itemAccordion === "string"
     ) {
+      // console.log(itemKey, ":", itemAccordion);
       return (
-        <AccordionDetails>
-          <Typography key={uuidv4()}>
+        <AccordionDetails key={uuidv4()}>
+          {/* <Typography> */}
+          <li>
             <span className={"beer-descripttion-bold"}>
-              {!isNaN(itemKey)
+              {
+              !isNaN(itemKey)
                 ? Number(itemKey) + 1
                 : itemKey.replace("_", " ")}
             </span>
             : <span className="beer-descripttion"> {itemAccordion}</span>
-          </Typography>
+          </li>
+          {/* </Typography> */}
         </AccordionDetails>
       );
     }
 
     return (
-      <Accordion>
-        <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel1a-header">
-          <Typography className={classes.heading}>
-            <li key={uuidv4()}>
-              <span className={"beer-descripttion-bold"}>
-                {!isNaN(itemKey)
-                  ? Number(itemKey) + 1
-                  : itemKey.replace("_", " ")}
-              </span>
-            </li>
-          </Typography>
+      <Accordion key={uuidv4()} className="beer-accordion">
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          id="panel1a-header"
+          className="beer-accordionsummary"
+        >
+          {/* <Typography
+             className={classes.heading} className="beer-accordiontypography"
+          > */}
+          <li>
+            <span className={"beer-descripttion-bold"}>
+              {!isNaN(itemKey)
+                ? Number(itemKey) + 1
+                : itemKey.replace("_", " ")}:
+            </span>
+          </li>
+          {/* </Typography> */}
         </AccordionSummary>
         {Object.keys(itemAccordion).length
           ? Object.keys(itemAccordion).map((itemKey) => {
@@ -102,24 +121,23 @@ export default function ItemAccordion({ itemName, itemAccordion }) {
   };
 
   return (
-    <Accordion>
+    <Accordion key={uuidv4()} className="beer-accordion">
       <AccordionSummary expandIcon={<ExpandMoreIcon />} id="panel1a-header">
-        <Typography /*className={classes.heading}*/>
-          <li key={uuidv4()}>
-            <span className={"beer-descripttion-bold"}>
-              {!isNaN(itemName)
-                ? Number(itemName) + 1
-                : itemName.replace("_", " ")}
-            </span>
-          </li>
-        </Typography>
+        {/* <Typography
+          className={classes.heading} className="beer-accordiontypography"
+        > */}
+        <span className={"beer-descripttion-bold"}>
+          {!isNaN(itemName) ? Number(itemName) + 1 : itemName.replace("_", " ")}:
+        </span>
+        {/* </Typography> */}
       </AccordionSummary>
-
-      {Object.keys(itemAccordion).length
-        ? Object.keys(itemAccordion).map((itemKey) => {
-            return showInnerAccordion(itemKey, itemAccordion[itemKey]);
-          })
-        : "No data"}
+      <ul>
+        {Object.keys(itemAccordion).length
+          ? Object.keys(itemAccordion).map((itemKey) => {
+              return showInnerAccordion(itemKey, itemAccordion[itemKey]);
+            })
+          : "No data"}
+      </ul>
     </Accordion>
   );
 }

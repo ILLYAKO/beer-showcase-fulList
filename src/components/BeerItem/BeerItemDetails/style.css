@@ -9,3 +9,10 @@
 span.dropdown-toggle.beer-descripttion-bold {
   cursor: pointer;
 }
+
+.beer-itemaccordion {
+  background-color: yellow;
+  /* max-width: 200px; */
+  letter-spacing: 0.25em;
+  line-height: 23px;
+}

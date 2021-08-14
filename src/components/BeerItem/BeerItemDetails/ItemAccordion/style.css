@@ -1,0 +1,40 @@
+.MuiPaper-root {
+  background-color: #f4f4f4 !important;
+}
+.MuiPaper-elevation1 {
+  box-shadow: none !important;
+}
+.MuiIconButton-root {
+  padding: 0 !important;
+}
+.MuiAccordionSummary-root {
+  padding: 0 !important;
+  min-height: 20px !important;
+  justify-content: flex-start;
+}
+
+.MuiAccordionSummary-content {
+  margin: 0 !important;
+  line-height: 1.6 !important;
+  flex-grow: unset;
+}
+.MuiCollapse-root {
+  /* min-width: 250% !important; */
+  line-height: 1.5 !important;
+  padding-left: 7%;
+}
+
+.MuiAccordionDetails-root {
+  padding: 0 !important;
+}
+
+.beer-accordion {
+  background-color: red;
+}
+.beer-accordionsummary {
+  background-color: green;
+}
+/* .beer-accordiontypography {
+  background-color: blue;
+  color: white;
+} */

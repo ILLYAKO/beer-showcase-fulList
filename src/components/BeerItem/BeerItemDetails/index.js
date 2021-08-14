@@ -39,11 +39,13 @@ const BeerItemDetails = ({ item, isDetailShown, detailTextStyle }) => {
     }
 
     return (
-      <ItemAccordion
-        key={uuidv4()}
-        itemName={itemName}
-        itemAccordion={itemInner}
-      ></ItemAccordion>
+      <li key={uuidv4()} className="beer-itemaccordion">
+        <ItemAccordion
+          key={uuidv4()}
+          itemName={itemName}
+          itemAccordion={itemInner}
+        ></ItemAccordion>
+      </li>
     );
   };
 
