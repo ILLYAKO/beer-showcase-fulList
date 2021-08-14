@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react";
 import "./style.css";
 
-const BeerItemImage = ( {image_url, title} ) => {
+const BeerItemImage = ({ image_url, title }) => {
   return (
     <div
       className="item-img-card shake-lr"
@@ -13,4 +13,4 @@ const BeerItemImage = ( {image_url, title} ) => {
   );
 };
 
-export default BeerItemImage
+export default BeerItemImage;

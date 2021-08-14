@@ -8,7 +8,7 @@ function App() {
       <div className="d-flex justify-content-center beer-store-title">
         <h1>Beer Factory</h1>
       </div>
-      <SearchForm></SearchForm>     
+      <SearchForm></SearchForm>
       <BeerList></BeerList>
     </div>
   );

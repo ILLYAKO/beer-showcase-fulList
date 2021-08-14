@@ -89,16 +89,6 @@ const BeerItem = ({ beer }) => {
             item={beer}
             isDetailShown={isDetailShown}
             detailTextStyle={detailTextStyle}
-
-            // isButtonShown={isButtonShown}
-            // textButton={textButton}
-            // setTextButton={setTextButton}
-            // buttonStyle={buttonStyle}
-            // setButtonStyle={setButtonStyle}
-            // isAtFirst={isAtFirst}
-            // setIsAtFirst={setIsAtFirst}
-            // animationCard={animationCard}
-            // setAnimationCard={setAnimationCard}
           ></BeerItemDetails>
         </div>
       </div>

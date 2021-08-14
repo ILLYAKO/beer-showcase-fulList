@@ -36,8 +36,6 @@
   }
 }
 
-
-
 .beer-card-right {
   align-self: center;
 }
@@ -87,7 +85,6 @@
   visibility: visible;
   opacity: 1;
   animation: btn-animation-fadein ease-in-out 2s;
-  
 }
 @keyframes btn-animation-fadein {
   from {
@@ -141,7 +138,7 @@
 }
 
 .beer-det-text-fade-in {
-    position: relative;
+  position: relative;
   display: inline-block;
   opacity: 1;
   animation: text-animation-fadein ease-in-out 2s;
@@ -160,8 +157,6 @@
     flex-direction: column;
     align-items: center;
   }
-
-
 
   button.beer-btn {
     max-width: 80%;

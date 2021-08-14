@@ -19,7 +19,6 @@
   flex-grow: unset;
 }
 .MuiCollapse-root {
-  /* min-width: 250% !important; */
   line-height: 1.5 !important;
   padding-left: 7%;
 }
@@ -34,7 +33,3 @@
 .beer-accordionsummary {
   background-color: green;
 }
-/* .beer-accordiontypography {
-  background-color: blue;
-  color: white;
-} */
