@@ -9,7 +9,7 @@ const BeerItemDetails = ({ item, isDetailShown, detailTextStyle }) => {
   }
 
   const isDouleNameValue = (text) =>
-    ["volume", "boil_volume", "temp", "amount", "yeast"].includes(text);
+    process.env.REACT_APP_DOUBLE_NAME.split(",").includes(text);
 
   const showBeerDetails = (itemName, itemInner) => {
     if (typeof itemInner === "number" || typeof itemInner === "string") {

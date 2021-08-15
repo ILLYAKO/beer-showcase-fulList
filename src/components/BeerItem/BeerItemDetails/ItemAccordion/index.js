@@ -6,12 +6,14 @@ import AccordionDetails from "@material-ui/core/AccordionDetails";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./style.css";
 
+
 export default function ItemAccordion({ itemName, itemAccordion }) {
   const textStringNumnerConverter = (text) =>
     !isNaN(text) ? Number(text) + 1 : text.replace("_", " ");
 
   const isDouleNameValue = (text) =>
-    ["volume", "boil_volume", "temp", "amount"].includes(text);
+    process.env.REACT_APP_DOUBLE_NAME.split(",").includes(text);
+
 
   const showInnerAccordion = (itemKey, itemAccordion) => {
     if (!itemAccordion) {
