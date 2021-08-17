@@ -3,7 +3,6 @@ import { BeerContext } from "../../context/BeerContext";
 import "./style.css";
 
 const SearchInput = () => {
-  // eslint-disable-next-line
   const { wantedBeer, setWantedBeer } = useContext(BeerContext);
 
   const formChangeHandler = (e) => {

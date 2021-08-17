@@ -3,7 +3,6 @@ import axios from "axios";
 
 import BeerItem from "../BeerItem";
 import { BeerContext } from "../../context/BeerContext";
-import { BeerItemProvider } from "../../context/BeerItemContext";
 
 import "./style.css";
 
@@ -26,7 +25,7 @@ const BeerList = () => {
   }, []);
 
   return (
-    <BeerItemProvider>
+
       <div className="beer-list">
         {!wantedBeer
           ? beerData.map((beer) => {
@@ -38,7 +37,7 @@ const BeerList = () => {
               )
               .map((beer) => <BeerItem key={beer.id} beer={beer}></BeerItem>)}
       </div>
-    </BeerItemProvider>
+
   );
 };
 
