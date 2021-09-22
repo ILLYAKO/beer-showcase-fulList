@@ -1,5 +1,6 @@
 {
-  "name": "beer-showcase",
+  "homepage": "http://illyako.github.io/beer-showcase-fulList",
+  "name": "beer-showcase-fulList",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,11 +24,14 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
-    "start": "set PORT=3001 && react-scripts start",
+    "start": "react-scripts start",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "coverage": "npm run test -- --coverage",
     "eject": "react-scripts eject"
+    
   },
   "eslintConfig": {
     "extends": [
@@ -48,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "@types/dotenv": "^8.2.0"
+    "@types/dotenv": "^8.2.0",
+    "gh-pages": "^3.2.3"
   }
 }
